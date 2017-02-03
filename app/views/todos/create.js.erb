@@ -1,10 +1,1 @@
-$("#list").innerHTML += "<%= escape_javascript(render(:partial => 'todos')) %>"
-$user_html_ul="<ul>"
-             var parsed_data = $.parseJSON(data);
-              $.each(parsed_data, function(index,value) {
-
-               $user_html_li = "<li>" + result.description + "<br>"+"<strong>priority: </strong>"+result.priority+"<br><div id="link"><%= link_to "Done", todo_path(result), method: 'delete', :class=>"done" %> </div>  </li>"});
-             $user_html_ul_close = "</ul>"
-             $user_html = $user_html_ul + $user_html_li + $user_html_ul_close
-            $('#list').append($user_html);
 

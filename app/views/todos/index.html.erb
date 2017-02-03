@@ -54,7 +54,7 @@ $('form').submit(function() {
                     + data.results[i]["priority"] 
                     +"<br>"
                     + "<div id='link'>"
-                    +"<a rel='nofollow' data-delete='"+todo+"' class='done' href='#'>Done</a>" 
+                    +"<a rel='nofollow' class='done' data-method='delete' href='/todos/"+todo+"'>Done</a>" 
                     + " </div>" 
                     + "</li>" 
         } 
@@ -68,14 +68,5 @@ $('form').submit(function() {
 });
 
 
-$( ".done" ).click(function(e) {
- e.preventDefault();
- var id = $(this).data('id');  
-   $.ajax({
-        type: "POST",
-        url: "/todos/" + id, 
-        data: id,
-        dataType: "JSON" 
-    });
-});
+
 </script>
