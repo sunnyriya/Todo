@@ -1,0 +1,2 @@
+$("#list").innerHTML += "<%= escape_javascript(render(:partial => 'todos')) %>"
+

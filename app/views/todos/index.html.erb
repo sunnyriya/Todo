@@ -1,0 +1,81 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+</head>
+
+<h1 class="heading">My Todos</h1>
+<%= form_for Todo.new  do |f| %>
+  <div class="form-group1">
+    <label class="label-name" for="cake_name">What needs doing?</label>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="form-group1">
+    <label class="label-name" for="cake_name">Priority Level</label>
+    <%= f.text_field :priority , :class=>"field-priority"%>
+  </div>
+
+  <div class="form-group" id="create">
+  <%= f.submit %>
+  </div>
+<% end %>
+<div id="todo_list">
+<ul id="list">
+<% @todos.each do |todo| %>
+  <li>
+    <%= todo.description %><br>
+    <strong>priority: </strong><%= todo.priority %><br>
+    <div id="link">
+      <%= link_to "Done", todo_path(todo), method: 'delete', :class=>"done" %>
+    </div>
+  </li>
+<% end %>
+</ul>
+</div>
+
+<script>
+$('form').submit(function() {  
+    var valuesToSubmit = $(this).serialize();
+    $.ajax({
+        type: "POST",
+        url: $(this).attr('action'), 
+        data: valuesToSubmit,
+        dataType: "JSON" 
+    }).success(function(data){
+        console.log("success", data);
+        
+        $html_ul="<ul id='list'>"
+        
+        for (var i = 0; i < data.results.length; i++) {
+            var todo = data.results[i]["id"]
+            $html_li = "<li>"
+                    + data.results[i]["description"]
+                    + "<br>"
+                    + "<strong>priority: </strong>"
+                    + data.results[i]["priority"] 
+                    +"<br>"
+                    + "<div id='link'>"
+                    +"<a rel='nofollow' data-delete='"+todo+"' class='done' href='#'>Done</a>" 
+                    + " </div>" 
+                    + "</li>" 
+        } 
+              
+        $html_ul_close = "</ul>"
+        $html = $html_ul + $html_li + $html_ul_close
+        $('#todo_list').append($html);
+
+    });
+    return false; 
+});
+
+
+$( ".done" ).click(function(e) {
+ e.preventDefault();
+ var id = $(this).data('id');  
+   $.ajax({
+        type: "POST",
+        url: "/todos/" + id, 
+        data: id,
+        dataType: "JSON" 
+    });
+});
+</script>

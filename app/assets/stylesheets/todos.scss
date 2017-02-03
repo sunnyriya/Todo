@@ -1,0 +1,97 @@
+// Place all the styles related to the todos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#create input{
+
+    background-color: #1a183f;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: .2vw;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    width: 7%;
+    padding-bottom: 0.3vw;
+    padding-top: 0.3vw;
+    margin-left: 178px;
+}
+
+.heading{
+    font-family: Pacifico;
+    color: rgb(31, 29, 85);
+    font-size: 31px;
+    text-align: center;
+    font-weight: 400;      
+    line-height: 36px;
+    width: 81%;
+    margin-left: 8%;
+    margin-top: 2vw;
+}
+
+.field-priority{
+	margin-left: 30px;
+}
+
+.form-group1{
+	margin-bottom: 11px;
+}
+
+.label-name{
+    #color: #9a9a9a;
+    font-family: Pacifico;
+    font-weight: 500;
+}
+
+.field-cake-name {
+    padding-bottom: 0.5vw;
+    width: 105%;
+    border-radius: .4vw;
+    border: 1px solid #e6e6e6;
+}
+
+.s-cakename{
+    margin: 0;
+    width: 15vw;
+    font-family: Raleway;
+    font-weight: 600;
+    font-size:15px;
+    margin-left: 0.6vw;
+    color:  #000000;
+
+}
+li {
+   color: black;
+   font-style: italic;
+   font-family: 'Raleway', sans-serif;
+
+}
+
+ul {
+    list-style-type: square;
+}
+
+body{
+	background-color: #eff4fc;
+}
+
+.done{
+
+    background-color: #1a183f;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: .1vw;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    width: 7%;
+    padding-bottom: 0.3vw;
+    padding-top: 0.3vw;
+    text-decoration: none;
+    padding-left: 6px;
+    padding-right: 6px;
+
+}
+
+#link{
+	    margin-top: 7px;
+}
