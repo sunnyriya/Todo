@@ -1,8 +1,12 @@
-<head>
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
-</head>
 
-<h1 class="heading">My Todos</h1>
+
+<% if user_signed_in? %>
+  <div class="user">
+    Logged in as <strong><%= current_user.name %></strong>.
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'links'  %>
+  </div>
+<% end %>
+
 <%= form_for Todo.new  do |f| %>
   <div class="form-group1">
     <label class="label-name" for="cake_name">What needs doing?</label>
@@ -15,21 +19,22 @@
   </div>
 
   <div class="form-group" id="create">
-  <%= f.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
+
 <div id="todo_list">
-<ul id="list">
-<% @todos.each do |todo| %>
-  <li>
-    <%= todo.description %><br>
-    <strong>priority: </strong><%= todo.priority %><br>
-    <div id="link">
-      <%= link_to "Done", todo_path(todo), method: 'delete', :class=>"done" %>
-    </div>
-  </li>
-<% end %>
-</ul>
+  <ul id="list">
+    <% @todos.each do |todo| %>
+      <li>
+          <%= todo.description %><br>
+          <strong>priority: </strong><%= todo.priority %><br>
+          <div id="link">
+            <%= link_to "Done", todo_path(todo), method: 'delete', :class=>"done" %>
+          </div>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 <script>
@@ -54,7 +59,7 @@ $('form').submit(function() {
                     + data.results[i]["priority"] 
                     +"<br>"
                     + "<div id='link'>"
-                    +"<a rel='nofollow' class='done' data-method='delete' href='/todos/"+todo+"'>Done</a>" 
+                    +"<a rel='nofollow' class='done'data-method='delete' href='/todos/"+todo+"' data-remote='true'>Done</a>" 
                     + " </div>" 
                     + "</li>" 
         } 
@@ -66,7 +71,5 @@ $('form').submit(function() {
     });
     return false; 
 });
-
-
 
 </script>

@@ -1,13 +1,14 @@
 class TodosController < ApplicationController
 	
   def index
-    @todos = Todo.all  
+    @todos = Todo.where(user_id: current_user.id) 
   end
   
   
 
   def create
-    @todo = Todo.create(todo_params)
+    @user = User.find(current_user.id)
+    @todo = @user.todos.create(todo_params)
     todos = Todo.all
     respond_to do |format|
       format.json { 
@@ -19,11 +20,9 @@ class TodosController < ApplicationController
 
   def destroy
     todo = Todo.find(params[:id])
-    #todo.destroy
     respond_to do |format|
       if todo.destroy
         format.html { redirect_to root_path }
-        #format.json { render action: 'index', status: :created, location: todo }
       end
     end
   end

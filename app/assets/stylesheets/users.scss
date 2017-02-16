@@ -1,0 +1,55 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sub-heading{
+	font-family: Pacifico;
+    color: #1f1d55;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36px;
+    width: 81%;
+    margin-top: 2vw;
+}
+
+#sign-up input{
+
+    background-color: #1a183f;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: .2vw;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    width: 7%;
+    padding-bottom: 0.3vw;
+    padding-top: 0.3vw;
+    margin-bottom: 16px;
+
+}
+
+.links{
+
+    background-color: #1a183f;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: .2vw;
+    font-family: 'Raleway', sans-serif;
+    border: none;
+    width: 7%;
+    padding-bottom: 0.3vw;
+    padding-top: 0.3vw;
+    font-size: 15px;
+    text-decoration: none;
+}
+.user{
+	float: right;
+	font-family: Pacifico;
+
+}
+
+#error_explanation{
+	#color: #9a9a9a;
+    font-family: Pacifico;
+    font-weight: 500;
+    
+}
