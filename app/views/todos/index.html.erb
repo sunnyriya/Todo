@@ -4,6 +4,9 @@
   <div class="user">
     Logged in as <strong><%= current_user.name %></strong>.
     <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'links'  %>
+    <% if current_user.present? %>
+      <%= link_to "Chat", "#", class: "btn btn-success btn-xs start-conversation", id: "chat_cake" ,"data-sid" => current_user.id, "data-user" => current_user.name %>
+    <% end %>
   </div>
 <% end %>
 
@@ -36,6 +39,17 @@
     <% end %>
   </ul>
 </div>
+
+
+<div id="chat">
+           <div id="chat-with">ChatRoom<span id='close'>x</span></div>
+           <div id="message-wrapper">
+           <div id='messages'></div>
+           <br/><br/>
+           <div id="typing_field"></div></div>
+           <div><%= text_field_tag :body, '', id: 'chat-speak' ,placeholder: "Send a message"%></div>
+</div>
+
 
 <script>
 $('form').submit(function() {  
@@ -71,5 +85,26 @@ $('form').submit(function() {
     });
     return false; 
 });
+
+ 
+    $(function() {
+          $('#chat_cake').click(function() {
+              $('#chat').show();
+              return false;
+           }); 
+           });       
+  
+    $(function() {
+          $('#close').click(function() {
+              $('#chat').hide();
+              return false;
+          });    
+          });    
+  
+    $(document).ready(function(){
+        if ($("#messages:not(:empty)").length) {
+      $('#chat').show();
+    }                                            
+   });
 
 </script>
